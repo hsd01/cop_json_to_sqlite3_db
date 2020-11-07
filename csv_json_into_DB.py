@@ -2,14 +2,18 @@ import pandas as pd
 import json
 import sqlite3
 
+#creating database
 conn = sqlite3.connect('c:/Users/Taka/Desktop/GDT_1.db')
 c = conn.cursor()
+# creating table
 c.execute("""CREATE TABLE IF NOT EXISTS GreenDeck
 	(name TEXT, brand_name TEXT, regular_price_value REAL, offer_price_value REAL, 
 	 currency TEXT, classification_l1 TEXT, classification_l2 TEXT, classification_l3 TEXT,
 	 classification_l4 TEXT)""")
 
-df = pd.read_json("C:/Users/Taka/Desktop/js.json")
+# reading json data for some reason i'm not posting json file right now may be later ill post
+
+df = pd.read_json("C:/Users/Taka/Desktop/GD.json")
 name = df['name']
 name=name
 brand = df['brand_name']
@@ -42,3 +46,4 @@ for i in ml:
 conn.commit()
 
 conn.close()
+#saved and clossed the database
